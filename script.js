@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // State & Config
     // ------------------------------------------
     const defaultData = {
-        name: 'Bintang Kesayangan',
-        age: '21',
+        name: 'LUKMAN HAKIM',
+        age: '30',
         sender: 'Dari seseorang yang selalu mendukung & mendoakanmu ✨',
         role: 'Spesial',
         message: `Selamat ulang tahun yang paling hangat! 🎂\n\nSemoga di usia yang baru ini, setiap langkahmu dipenuhi dengan kebahagiaan yang melimpah, kesehatan yang prima, dan ketenangan hati.\n\nTerima kasih sudah menjadi sosok yang selalu membawa senyuman dan energi positif bagi orang-orang di sekitarmu. Tetaplah bermimpi tinggi, tetaplah menjadi dirimu yang luar biasa, dan jangan pernah ragu bahwa hal-hal terbaik sedang menunggumu di depan.\n\nSemoga semua impian, doa, dan harapan yang kamu bisikkan dalam hati hari ini segera menjadi kenyataan. Selamat merayakan hari kelahiranmu! 🥳💖`
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.recipient-name-text').forEach(el => el.textContent = birthdayData.name);
         document.querySelectorAll('.recipient-age-text').forEach(el => el.textContent = birthdayData.age);
         document.querySelectorAll('.sender-text').forEach(el => el.textContent = birthdayData.sender);
-        
+
         const cardMsgEl = document.getElementById('card-message-text');
         if (cardMsgEl) {
             cardMsgEl.innerHTML = birthdayData.message.replace(/\n/g, '<br>');
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
             introOverlay.classList.add('hidden');
             mainContent.classList.remove('content-hidden');
             mainContent.classList.add('content-visible');
-            
+
             // Continuous gentle balloons spawn
             startBalloonSpawner();
             // Launch welcoming fireworks
