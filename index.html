@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun! 🎂✨ Special Birthday Celebration</title>
+    <meta name="description" content="Website kejutan ulang tahun interaktif dengan kue lilin, musik, kartu ucapan, dan galeri memori.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+</head>
+<body class="theme-twilight">
+
+    <!-- Atmospheric Starry Background -->
+    <div class="star-field" aria-hidden="true"></div>
+
+    <!-- Interactive Canvases for Confetti & Fireworks -->
+    <canvas id="fireworks-canvas"></canvas>
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- SCREEN 1: INTRO UNBOXING EXPERIENCE -->
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="intro-card">
+            <div class="intro-badge">
+                <span>✨</span> Ada Paket Kejutan Spesial Buatmu!
+            </div>
+            
+            <div class="gift-box-wrapper" id="open-gift-box" title="Klik untuk membuka kejutan">
+                <div class="gift-box-3d">
+                    <div class="gift-sparkles"></div>
+                    <div class="gift-lid">
+                        <div class="gift-bow">
+                            <div class="bow-loop left"></div>
+                            <div class="bow-loop right"></div>
+                        </div>
+                        <div class="gift-lid-ribbon"></div>
+                    </div>
+                    <div class="gift-body">
+                        <div class="gift-ribbon-v"></div>
+                        <div class="gift-ribbon-h"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="intro-title">Hari Ini Hari Spesial!</h1>
+            <p class="intro-desc">Seseorang telah menyiapkan kejutan kecil yang hangat khusus untuk merayakan hari kelahiranmu. Buka kado ini sekarang!</p>
+            
+            <button id="open-gift-btn" class="btn-open-gift">
+                <span>🎁</span> Buka Kejutan Ulang Tahun
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN INTERACTIVE APP -->
+    <main id="main-content" class="main-content content-hidden">
+
+        <!-- Top Floating Controls Navigation Bar -->
+        <header class="top-nav">
+            <div class="nav-brand">
+                <span>🎂</span>
+                <span>Happy Birthday</span>
+            </div>
+            <div class="nav-actions">
+                <button id="music-toggle-btn" class="nav-btn" title="Nyalakan / Matikan Musik">
+                    <span id="music-icon">🎵</span>
+                    <span id="music-text">Musik: On</span>
+                </button>
+                <button id="confetti-btn" class="nav-btn primary" title="Ledakkan Confetti">
+                    <span>🎉</span>
+                    <span>Confetti!</span>
+                </button>
+                <button id="theme-toggle-btn" class="nav-btn" title="Ganti Suasana Warna">
+                    <span>🎨</span>
+                    <span>Tema</span>
+                </button>
+                <button id="edit-btn" class="nav-btn" title="Sesuaikan Nama & Pesan">
+                    <span>✏️</span>
+                    <span>Edit Ucapan</span>
+                </button>
+                <button id="share-btn" class="nav-btn" title="Salin Tautan untuk Dibagikan">
+                    <span>🔗</span>
+                    <span>Bagi Link</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Hero Greeting Section -->
+        <section class="hero-section">
+            <div class="hero-pill">
+                <span>✨</span> A Special Day For A Special Person <span>✨</span>
+            </div>
+            <h1 class="hero-title">
+                Selamat Ulang Tahun, <br>
+                <span class="name-highlight recipient-name-text">Bintang Kesayangan</span>! 🎂
+            </h1>
+            <p class="hero-subtitle">
+                Selamat menyambut usia ke-<span class="age-badge recipient-age-text">21</span>! Semoga setiap detik dalam hidupmu selalu diiringi kebahagiaan, tawa yang tak pernah padam, serta keberkahan yang tiada henti.
+            </p>
+        </section>
+
+        <!-- SECTION 1: THE MAGICAL BIRTHDAY CAKE -->
+        <section class="cake-section">
+            <div class="cake-stage">
+                <span class="section-tag">Interactive Celebration</span>
+                <h2 class="section-title">Tiup Lilin & Buat Permohonan</h2>
+                <p style="color: var(--text-secondary); margin-top: 6px; font-size: 0.95rem;">
+                    Pejamkan mata sejenak, pikirkan satu harapan terbaikmu, lalu tiup lilin di bawah ini! ✨
+                </p>
+
+                <!-- Realistic Interactive Cake -->
+                <div class="cake-container">
+                    <div class="candle-assembly" id="candle-flame-wrapper">
+                        <div class="flame" id="candle-flame"></div>
+                        <div class="smoke" id="candle-smoke"></div>
+                        <div class="candle-wick"></div>
+                        <div class="candle-stick"></div>
+                    </div>
+                    
+                    <div class="cake-top-tier">
+                        <div class="frosting-drips">
+                            <span class="drip"></span>
+                            <span class="drip"></span>
+                            <span class="drip"></span>
+                            <span class="drip"></span>
+                            <span class="drip"></span>
+                            <span class="drip"></span>
+                        </div>
+                    </div>
+                    <div class="cake-bottom-tier"></div>
+                    <div class="cake-plate"></div>
+                </div>
+
+                <div id="candle-status" class="cake-status-text">
+                    🔥 Lilin sedang menyala. Klik tombol di bawah atau tiup langsung!
+                </div>
+
+                <div class="cake-actions">
+                    <button id="blow-btn" class="btn-action blow">
+                        <span>💨</span> Tiup Lilin Sekarang!
+                    </button>
+                    <button id="relight-btn" class="btn-action relight" disabled>
+                        <span>🔥</span> Nyalakan Lilin Lagi
+                    </button>
+                    <button id="mic-toggle-btn" class="btn-action mic" title="Tiup ke mikrofon ponsel/laptopmu">
+                        <span>🎙️</span> Tiup Pakai Mic
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 3D INTERACTIVE GREETING CARD -->
+        <section class="card-section">
+            <div class="section-header">
+                <span class="section-tag">Surat Dari Lubuk Hati</span>
+                <h2 class="section-title">Kartu Ucapan Spesial</h2>
+                <p style="color: var(--text-secondary); margin-top: 6px;">
+                    Sentuh amplop di bawah ini untuk membaca surat hangat yang ditulis khusus untukmu.
+                </p>
+            </div>
+
+            <div class="envelope-wrapper" id="open-letter-btn">
+                <div class="envelope-visual">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-seal">💌</div>
+                </div>
+                <div class="envelope-hint">
+                    <span>✨</span> Klik untuk membuka amplop <span>✨</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: POLAROID MEMORY BOARD -->
+        <section class="polaroid-section">
+            <div class="section-header" style="text-align: center;">
+                <span class="section-tag">Galeri Kenangan Indah</span>
+                <h2 class="section-title">Momen Manis Perjalananmu</h2>
+                <p style="color: var(--text-secondary); margin-top: 6px;">
+                    Setiap foto mengabadikan senyum dan kenangan berharga. Kamu juga bisa klik ikon 📷 untuk mengganti dengan fotomu sendiri!
+                </p>
+            </div>
+
+            <div class="polaroid-grid">
+                <!-- Polaroid 1 -->
+                <div class="polaroid-card">
+                    <div class="washi-tape"></div>
+                    <label class="polaroid-upload-label" title="Ganti foto ini">
+                        📷
+                        <input type="file" accept="image/*" class="polaroid-file-input">
+                    </label>
+                    <div class="polaroid-img-slot">
+                        <div class="polaroid-svg-scene" style="background: linear-gradient(135deg, #ffe5ec, #ffc2d1);">
+                            <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="42" fill="#ffb3c6"/>
+                                <path d="M30 65H70V75C70 77.2 68.2 79 66 79H34C31.8 79 30 77.2 30 75V65Z" fill="#ff758f"/>
+                                <path d="M35 50H65V65H35V50Z" fill="#ff8fa3"/>
+                                <rect x="47" y="32" width="6" height="18" rx="2" fill="#ffd166"/>
+                                <path d="M50 20C50 20 46 25 46 28C46 30.2 47.8 32 50 32C52.2 32 54 30.2 54 28C54 25 50 20 50 20Z" fill="#ff4d00"/>
+                                <circle cx="50" cy="27" r="2" fill="#ffff00"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">Lilin & Doa Terbaik 🎂</div>
+                </div>
+
+                <!-- Polaroid 2 -->
+                <div class="polaroid-card">
+                    <div class="washi-tape" style="background: rgba(167, 66, 245, 0.75);"></div>
+                    <label class="polaroid-upload-label" title="Ganti foto ini">
+                        📷
+                        <input type="file" accept="image/*" class="polaroid-file-input">
+                    </label>
+                    <div class="polaroid-img-slot">
+                        <div class="polaroid-svg-scene" style="background: linear-gradient(135deg, #e0c3fc, #8ec5fc);">
+                            <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="42" fill="#c77dff"/>
+                                <path d="M50 22L54 38L70 42L54 46L50 62L46 46L30 42L46 38L50 22Z" fill="#ffd166"/>
+                                <circle cx="68" cy="28" r="4" fill="#ffffff"/>
+                                <circle cx="32" cy="68" r="5" fill="#ffffff"/>
+                                <path d="M38 72Q50 82 62 72" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">Senyum yang Bersinar ✨</div>
+                </div>
+
+                <!-- Polaroid 3 -->
+                <div class="polaroid-card">
+                    <div class="washi-tape" style="background: rgba(6, 214, 160, 0.75);"></div>
+                    <label class="polaroid-upload-label" title="Ganti foto ini">
+                        📷
+                        <input type="file" accept="image/*" class="polaroid-file-input">
+                    </label>
+                    <div class="polaroid-img-slot">
+                        <div class="polaroid-svg-scene" style="background: linear-gradient(135deg, #e2fcd6, #a1fcd4);">
+                            <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="42" fill="#06d6a0"/>
+                                <rect x="30" y="42" width="40" height="38" rx="6" fill="#118ab2"/>
+                                <rect x="26" y="34" width="48" height="12" rx="4" fill="#ffd166"/>
+                                <rect x="46" y="34" width="8" height="46" fill="#ef476f"/>
+                                <circle cx="43" cy="28" r="6" fill="#ef476f"/>
+                                <circle cx="57" cy="28" r="6" fill="#ef476f"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">Kado Kebahagiaan 🎁</div>
+                </div>
+
+                <!-- Polaroid 4 -->
+                <div class="polaroid-card">
+                    <div class="washi-tape" style="background: rgba(255, 117, 143, 0.75);"></div>
+                    <label class="polaroid-upload-label" title="Ganti foto ini">
+                        📷
+                        <input type="file" accept="image/*" class="polaroid-file-input">
+                    </label>
+                    <div class="polaroid-img-slot">
+                        <div class="polaroid-svg-scene" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">
+                            <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="42" fill="#f7a072"/>
+                                <path d="M50 78C50 78 24 58 24 40C24 30 32 24 40 24C45 24 50 28 50 28C50 28 55 24 60 24C68 24 76 30 76 40C76 58 50 78 50 78Z" fill="#ff4d6d"/>
+                                <circle cx="38" cy="36" r="3" fill="#ffffff" opacity="0.6"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="polaroid-caption">Cinta & Sahabat Sejati 💖</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: BALLOON POP MINI GAME -->
+        <section class="balloon-game-section">
+            <div class="game-score-pill">
+                <span>🎈</span> Doa Terkumpul: <span id="wishes-count">0</span> Doa Rahasia
+            </div>
+            <h2 class="section-title">Pecahkan Balon Keberuntungan!</h2>
+            <p style="color: var(--text-secondary); max-width: 580px; margin: 0 auto; font-size: 0.95rem;">
+                Balon-balon ini membawa doa dan afirmasi rahasia untuk masa depanmu. Klik atau ketuk setiap balon yang melayang untuk membuka doanya!
+            </p>
+
+            <div class="balloon-play-stage" id="balloon-game-container">
+                <!-- Dynamically generated floating balloons will appear here -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <p>Dibuat dengan cinta & tawa untuk merayakan hari kelahiranmu ✨</p>
+            <p style="margin-top: 6px; opacity: 0.7; font-size: 0.8rem;">
+                Klik tombol "Edit Ucapan" di atas untuk membagikan halaman ini ke orang tersayang!
+            </p>
+        </footer>
+    </main>
+
+    <!-- ========================================================
+         MODALS & DIALOGS
+         ======================================================== -->
+
+    <!-- MODAL 1: CARD UNBOXING MODAL -->
+    <div id="card-modal" class="modal-backdrop">
+        <div class="card-modal-content">
+            <button class="modal-close-btn" id="close-card-modal">✕</button>
+            <div class="letter-seal-decor">💌</div>
+
+            <div class="letter-header">
+                <h3>Untuk <span class="recipient-name-text">Bintang Kesayangan</span></h3>
+                <span>Sebuah catatan tulus di hari ulang tahunmu</span>
+            </div>
+
+            <div class="letter-body" id="card-message-text">
+                <!-- Rendered dynamically -->
+            </div>
+
+            <div class="letter-footer">
+                <span class="sender-text">Dari seseorang yang selalu mendoakanmu ❤️</span>
+            </div>
+
+            <!-- Fun Emoji Reactions -->
+            <div class="card-reactions">
+                <button class="card-reaction-btn" data-emoji="💖" title="Kirim Cinta">💖</button>
+                <button class="card-reaction-btn" data-emoji="🥳" title="Kirim Hura-Hura">🥳</button>
+                <button class="card-reaction-btn" data-emoji="🥺" title="Terharu">🥺</button>
+                <button class="card-reaction-btn" data-emoji="🍰" title="Kue Manis">🍰</button>
+                <button class="card-reaction-btn" data-emoji="✨" title="Kilaun Doa">✨</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: WISH GRANTED POPUP -->
+    <div id="wish-modal" class="modal-backdrop">
+        <div class="modal-content-glass" style="text-align: center;">
+            <button class="modal-close-btn" id="close-wish-modal">✕</button>
+            <div style="font-size: 3.5rem; margin-bottom: 10px;">🌟</div>
+            <h3 class="modal-title">Permohonanmu Terkirim ke Semesta!</h3>
+            <p style="color: var(--text-secondary); line-height: 1.6; margin-top: 10px;">
+                Lilin telah padam, dan asapnya membawa doa tulusmu terbang tinggi ke langit malam. Percayalah bahwa hal-hal luar biasa sedang bersiap menghampirimu di usia yang baru ini! 🎂✨
+            </p>
+            <button class="btn-action blow" style="margin-top: 24px;" onclick="document.getElementById('wish-modal').classList.remove('active')">
+                <span>💖</span> Aamiin, Terima Kasih!
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL 3: CUSTOMIZER & SHARE MODAL -->
+    <div id="edit-modal" class="modal-backdrop">
+        <div class="modal-content-glass">
+            <button class="modal-close-btn" id="close-edit-modal">✕</button>
+            <h3 class="modal-title">✏️ Sesuaikan Web Ulang Tahun</h3>
+            <p class="modal-subtitle">Ubah nama, usia, serta isi ucapan sesukamu. Kamu juga bisa membagikan tautannya ke WhatsApp!</p>
+
+            <form id="edit-form">
+                <div class="form-group">
+                    <label for="input-name">Nama Penerima</label>
+                    <input type="text" id="input-name" class="form-input" placeholder="Contoh: Sarah / Bintang / Sayang" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-age">Usia yang Dirayakan</label>
+                    <input type="text" id="input-age" class="form-input" placeholder="Contoh: 21" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-sender">Nama Pengirim</label>
+                    <input type="text" id="input-sender" class="form-input" placeholder="Contoh: Sahabat Terdekatmu / Pasanganmu">
+                </div>
+
+                <div class="form-group">
+                    <label for="input-message">Pesan & Doa Hangat</label>
+                    <textarea id="input-message" class="form-input" rows="5" placeholder="Tuliskan harapan dan doa terbaikmu di sini..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-action blow" style="flex: 1;">
+                        <span>💾</span> Simpan & Terapkan
+                    </button>
+                    <button type="button" id="copy-link-btn" class="btn-action relight" style="flex: 1;">
+                        <span>🔗</span> Salin Link WA
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 4: POLAROID ZOOM MODAL -->
+    <div id="polaroid-zoom-modal" class="modal-backdrop">
+        <div class="modal-content-glass" style="max-width: 440px; text-align: center; padding: 25px;">
+            <button class="modal-close-btn" id="close-zoom-modal">✕</button>
+            <div id="zoom-img-container" style="border-radius: 12px; overflow: hidden; height: 320px; display: flex; justify-content: center; align-items: center; background: #fff;"></div>
+            <div id="zoom-caption" style="font-family: var(--font-handwriting); font-size: 1.8rem; margin-top: 18px; color: var(--gold);"></div>
+        </div>
+    </div>
+
+    <!-- Toast Floating Alert -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Sound & Interaction Scripts -->
+    <script src="audio.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
